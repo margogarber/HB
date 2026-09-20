@@ -112,7 +112,7 @@ export const gameData = {
       id: 'm1',
       photo: 'photo1.jpg',
       caption: '5 мая 2026 — день, когда две дуры встретились',
-      objectPosition: '50% 28%',
+      objectPosition: '50% 22%',
     },
     {
       id: 'm2',
@@ -124,13 +124,13 @@ export const gameData = {
       id: 'm3',
       photo: 'photo3.jpg',
       caption: '9 сентября 2026 — официальный день Бусинки',
-      objectPosition: '48% 30%',
+      objectPosition: '50% 40%',
     },
     {
       id: 'm4',
       photo: 'photo4.jpg',
       caption: 'Главный вопрос отношений: что есть будем?',
-      objectPosition: '50% 40%',
+      objectPosition: '50% 45%',
     },
   ],
 
@@ -139,6 +139,7 @@ export const gameData = {
     size: 3,
     hintMs: 2800,
     completeLine: 'Даже если всё перемешается, я всё равно выберу тебя.',
+    objectPosition: '50% 35%',
   },
 
   bouquet: {
