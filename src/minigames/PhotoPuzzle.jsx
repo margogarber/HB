@@ -140,7 +140,7 @@ export default function PhotoPuzzle({ onComplete, draft, onDraftChange }) {
             <SafePhoto
               photoKey={config.photo}
               alt="Собранное фото"
-              objectPosition="50% 30%"
+              objectPosition={config.objectPosition || '50% 30%'}
               label="Фото 5"
             />
           </div>
