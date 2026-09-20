@@ -143,16 +143,6 @@
   pointer-events: none;
 }
 
-.final-letter__eyebrow {
-  margin: 0 0 0.35rem;
-  padding-left: 0.35rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #781f35;
-}
-
 .final-letter__heading {
   margin: 0;
   padding-left: 0.35rem;

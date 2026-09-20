@@ -11,7 +11,6 @@ export default function Intro({ onStart }) {
         <span className="petal petal--c" />
       </div>
 
-      <p className="intro__eyebrow">Для Бусинки</p>
       <h1 className="intro__title">{gameData.title}</h1>
       <p className="intro__lead">{gameData.intro.text}</p>
 

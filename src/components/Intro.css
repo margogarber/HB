@@ -49,15 +49,6 @@
   animation: petal-float 6s ease-in-out infinite;
 }
 
-.intro__eyebrow {
-  margin: 0.35rem 0 0;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #781f35;
-}
-
 .intro__title {
   margin: 0;
   font-family: 'Cormorant Garamond', Georgia, serif;

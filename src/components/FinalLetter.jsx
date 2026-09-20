@@ -110,7 +110,6 @@ export default function FinalLetter({
 
           <article className="final-letter__card" aria-live="polite">
             <div className="final-letter__card-inner">
-              <p className="final-letter__eyebrow">Письмо для Бусинки</p>
               <h2 id={titleId} className="final-letter__heading">
                 {gameData.letterTitle}
               </h2>
