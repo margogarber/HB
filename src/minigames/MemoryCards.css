@@ -1,0 +1,139 @@
+.memory-game {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.memory-game__hud {
+  align-self: flex-start;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: #f5dde2;
+  border: 1px solid #e8bcc5;
+  color: #781f35;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.memory-game__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.memory-card {
+  appearance: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 14px;
+  aspect-ratio: 1.05 / 1;
+  min-height: 72px;
+  cursor: pointer;
+  perspective: 800px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.memory-card:disabled {
+  cursor: default;
+}
+
+.memory-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #fff8f5, 0 0 0 6px #781f35;
+}
+
+.memory-card__inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+
+.memory-card.is-open .memory-card__inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid #e8bcc5;
+  box-shadow: 0 6px 14px rgba(50, 29, 37, 0.08);
+}
+
+.memory-card__face--back {
+  background: linear-gradient(145deg, #781f35, #a84d63);
+  color: #fff8f5;
+}
+
+.memory-card__mark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.memory-card__face--front {
+  transform: rotateY(180deg);
+  background: #fff8f5;
+  padding: 0;
+}
+
+.memory-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.memory-card__face--front .safe-photo--fallback {
+  min-height: 100%;
+  border-radius: 0;
+}
+
+.memory-card__caption {
+  display: block;
+  padding: 0.55rem 0.5rem;
+  font-size: clamp(0.68rem, 2.8vw, 0.78rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: #321d25;
+  text-align: center;
+}
+
+.memory-card.is-matched .memory-card__face--front {
+  border-color: #781f35;
+  box-shadow: 0 0 0 2px rgba(120, 31, 53, 0.2);
+}
+
+.memory-game__done {
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+  color: #781f35;
+}
+
+@media (max-width: 360px) {
+  .memory-game__grid {
+    gap: 0.4rem;
+  }
+
+  .memory-card {
+    min-height: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-card__inner {
+    transition: none;
+  }
+}

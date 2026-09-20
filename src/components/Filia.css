@@ -1,0 +1,248 @@
+.filia {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.filia--compact {
+  gap: 0.55rem;
+}
+
+.filia__figure {
+  flex-shrink: 0;
+  width: 88px;
+  height: 96px;
+  animation: filia-sway 3.8s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+
+.filia--compact .filia__figure {
+  width: 68px;
+  height: 74px;
+}
+
+.filia__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 6px 10px rgba(50, 29, 37, 0.12));
+}
+
+.filia__letter {
+  opacity: 0;
+  transform-origin: 90px 90px;
+}
+
+.filia__mouth--happy,
+.filia__mouth--open {
+  opacity: 0;
+}
+
+.filia--enter .filia__figure {
+  animation:
+    filia-clumsy-in 0.72s cubic-bezier(0.34, 1.35, 0.64, 1) both,
+    filia-sway 3.8s ease-in-out 0.72s infinite;
+}
+
+.filia__lid {
+  transform-origin: center top;
+  transform: scaleY(0);
+  animation: filia-blink 4.8s ease-in-out infinite;
+}
+
+.filia__eye--right .filia__lid {
+  animation-delay: 0.08s;
+}
+
+.filia__brow,
+.filia__pupil,
+.filia__head-group,
+.filia__eye {
+  transition: transform 0.35s ease;
+}
+
+/* happy */
+.filia--happy .filia__brow--left {
+  transform: translate(0, 2px) rotate(-8deg);
+  transform-origin: 40px 47px;
+}
+
+.filia--happy .filia__brow--right {
+  transform: translate(0, 2px) rotate(8deg);
+  transform-origin: 80px 47px;
+}
+
+.filia--happy .filia__mouth--neutral {
+  opacity: 0;
+}
+
+.filia--happy .filia__mouth--happy {
+  opacity: 0.9;
+}
+
+/* thinking */
+.filia--thinking .filia__head-group {
+  transform: rotate(-5deg);
+  transform-origin: 60px 70px;
+}
+
+.filia--thinking .filia__brow--left {
+  transform: translate(0, -2px) rotate(-14deg);
+  transform-origin: 40px 47px;
+}
+
+.filia--thinking .filia__brow--right {
+  transform: translate(0, 1px) rotate(6deg);
+  transform-origin: 80px 47px;
+}
+
+.filia--thinking .filia__eye--left .filia__pupil,
+.filia--thinking .filia__eye--right .filia__pupil {
+  transform: translate(2.5px, -1px);
+}
+
+/* surprised */
+.filia--surprised .filia__eye {
+  transform: scale(1.12);
+  transform-origin: center;
+}
+
+.filia--surprised .filia__brow--left,
+.filia--surprised .filia__brow--right {
+  transform: translateY(-4px);
+}
+
+.filia--surprised .filia__mouth--neutral {
+  opacity: 0;
+}
+
+.filia--surprised .filia__mouth--open {
+  opacity: 1;
+}
+
+.filia--surprised .filia__lid {
+  animation: none;
+  transform: scaleY(0);
+}
+
+/* letter */
+.filia--letter .filia__letter {
+  opacity: 1;
+  animation: filia-letter-bob 2.4s ease-in-out infinite;
+}
+
+.filia--letter .filia__mouth--neutral {
+  opacity: 0.85;
+}
+
+.filia__bubble {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0.8rem 0.95rem;
+  background: #ffffff;
+  border: 1.5px solid #e8bcc5;
+  border-radius: 18px 18px 18px 6px;
+  box-shadow: 0 8px 24px rgba(50, 29, 37, 0.07);
+  color: #321d25;
+  font-size: 0.94rem;
+  line-height: 1.45;
+  animation: bubble-in 0.45s ease both;
+}
+
+.filia__name {
+  display: block;
+  margin-bottom: 0.22rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #781f35;
+}
+
+.filia__line {
+  display: block;
+}
+
+@keyframes filia-sway {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(1.8deg);
+  }
+}
+
+@keyframes filia-clumsy-in {
+  0% {
+    opacity: 0;
+    transform: translate(-12px, 18px) rotate(-12deg) scale(0.86);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(4px, -4px) rotate(4deg) scale(1.04);
+  }
+  78% {
+    transform: translate(-2px, 2px) rotate(-2deg) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-1.5deg) scale(1);
+  }
+}
+
+@keyframes filia-blink {
+  0%,
+  42%,
+  48%,
+  100% {
+    transform: scaleY(0);
+  }
+  45% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes filia-letter-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(3deg);
+  }
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filia__figure,
+  .filia--enter .filia__figure,
+  .filia__lid,
+  .filia--letter .filia__letter,
+  .filia__bubble,
+  .filia__brow,
+  .filia__pupil,
+  .filia__head-group,
+  .filia__eye {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .filia--enter .filia__figure {
+    opacity: 1;
+    transform: none;
+  }
+}

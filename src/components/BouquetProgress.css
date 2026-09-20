@@ -1,0 +1,159 @@
+.bouquet-progress {
+  width: 100%;
+  padding: 0.75rem 0.85rem 0.7rem;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1.5px solid #e8bcc5;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(50, 29, 37, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+.bouquet-progress__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #321d25;
+}
+
+.bouquet-progress__label strong {
+  color: #781f35;
+  font-variant-numeric: tabular-nums;
+}
+
+.bouquet-progress__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bouquet-progress__slot {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  min-width: 0;
+  border-radius: 12px;
+  background: #fff8f5;
+  border: 1px solid transparent;
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+}
+
+.bouquet-progress__slot.is-locked {
+  opacity: 0.34;
+}
+
+.bouquet-progress__slot.is-unlocked {
+  opacity: 1;
+  background: #f5dde2;
+  border-color: #e8bcc5;
+  animation: flower-pop 0.55s ease;
+}
+
+.bouquet-progress__bar {
+  margin-top: 0.55rem;
+  height: 4px;
+  border-radius: 999px;
+  background: #f5dde2;
+  overflow: hidden;
+}
+
+.bouquet-progress__bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #e8bcc5, #781f35);
+  transition: width 0.45s ease;
+}
+
+.flower-svg {
+  width: 28px;
+  height: 28px;
+  overflow: visible;
+}
+
+.flower-svg__petal {
+  fill: #e8bcc5;
+}
+
+.flower-svg__center {
+  fill: #781f35;
+}
+
+.flower-svg--rose .flower-svg__petal {
+  fill: #c45c74;
+}
+
+.flower-svg--peony .flower-svg__petal {
+  fill: #e8bcc5;
+}
+
+.flower-svg--tulip .flower-svg__petal {
+  fill: #a84d63;
+}
+
+.flower-svg--lily .flower-svg__petal {
+  fill: #f0c8d0;
+  stroke: #e8bcc5;
+  stroke-width: 0.5;
+}
+
+.flower-svg--daisy .flower-svg__petal {
+  fill: #fff8f5;
+  stroke: #e8bcc5;
+  stroke-width: 1;
+}
+
+.flower-svg--daisy .flower-svg__center {
+  fill: #c9a227;
+}
+
+.flower-svg--orchid .flower-svg__petal {
+  fill: #781f35;
+}
+
+.flower-svg--orchid .flower-svg__center {
+  fill: #f5dde2;
+}
+
+@keyframes flower-pop {
+  0% {
+    transform: scale(0.72);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 360px) {
+  .bouquet-progress {
+    padding: 0.65rem 0.7rem;
+  }
+
+  .flower-svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .bouquet-progress__slot {
+    min-height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bouquet-progress__slot.is-unlocked,
+  .bouquet-progress__bar span {
+    animation: none;
+    transition: none;
+  }
+}

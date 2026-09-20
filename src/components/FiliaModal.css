@@ -1,0 +1,70 @@
+.filia-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: end center;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+    max(1.25rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+}
+
+.filia-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: rgba(50, 29, 37, 0.38);
+  cursor: pointer;
+  animation: modal-fade 0.25s ease both;
+}
+
+.filia-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 520px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem 1rem 1.1rem;
+  background: #fff8f5;
+  border: 1.5px solid #e8bcc5;
+  border-radius: 24px 24px 20px 20px;
+  box-shadow: 0 -8px 40px rgba(50, 29, 37, 0.18);
+  animation: modal-rise 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.filia-modal__filia .filia__bubble {
+  border-radius: 18px;
+}
+
+.filia-modal__action {
+  width: 100%;
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filia-modal__backdrop,
+  .filia-modal__dialog {
+    animation: none;
+  }
+}

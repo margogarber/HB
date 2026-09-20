@@ -1,0 +1,224 @@
+.intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 1.25rem 0 0.5rem;
+  animation: fade-up 0.55s ease;
+}
+
+.intro__ornament {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 120px;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  width: 48px;
+  height: 28px;
+  border-radius: 50% 50% 45% 45%;
+  background: rgba(232, 188, 197, 0.45);
+}
+
+.petal--a {
+  top: 12px;
+  right: 8%;
+  transform: rotate(18deg);
+  animation: petal-float 7s ease-in-out infinite;
+}
+
+.petal--b {
+  top: 48px;
+  left: 4%;
+  width: 36px;
+  background: rgba(245, 221, 226, 0.75);
+  transform: rotate(-24deg);
+  animation: petal-float 8.5s ease-in-out infinite reverse;
+}
+
+.petal--c {
+  top: 20px;
+  left: 42%;
+  width: 22px;
+  height: 14px;
+  background: rgba(120, 31, 53, 0.14);
+  animation: petal-float 6s ease-in-out infinite;
+}
+
+.intro__eyebrow {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #781f35;
+}
+
+.intro__title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.85rem, 7.5vw, 2.65rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #321d25;
+}
+
+.intro__lead {
+  margin: 0;
+  font-size: clamp(0.95rem, 3.6vw, 1.05rem);
+  line-height: 1.55;
+  color: #321d25;
+}
+
+.intro__envelope {
+  position: relative;
+  width: min(100%, 280px);
+  margin: 0.15rem auto 0.25rem;
+  aspect-ratio: 1.45 / 1;
+  filter: drop-shadow(0 12px 24px rgba(120, 31, 53, 0.16));
+  animation: envelope-settle 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.intro__envelope-body {
+  position: absolute;
+  inset: 28% 0 0;
+  border-radius: 4px 4px 14px 14px;
+  background: linear-gradient(180deg, #fff8f5 0%, #f5dde2 100%);
+  border: 1.5px solid #e8bcc5;
+  overflow: hidden;
+}
+
+.intro__envelope-flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 52%;
+  background: linear-gradient(160deg, #e8bcc5, #f5dde2 55%, #fff8f5);
+  clip-path: polygon(0 0, 50% 78%, 100% 0);
+  border-top: 1.5px solid #e8bcc5;
+  transform-origin: top center;
+  animation: flap-breathe 5s ease-in-out infinite;
+}
+
+.intro__seal {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  width: 36px;
+  height: 36px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #a84d63, #781f35 70%);
+  box-shadow:
+    0 0 0 3px rgba(245, 221, 226, 0.9),
+    0 4px 10px rgba(120, 31, 53, 0.25);
+  z-index: 2;
+}
+
+.intro__seal::after {
+  content: 'В';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff8f5;
+}
+
+.intro__envelope-lines {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 42%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.intro__envelope-lines i {
+  display: block;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(120, 31, 53, 0.16);
+}
+
+.intro__envelope-lines i:nth-child(2) {
+  width: 78%;
+}
+
+.intro__envelope-lines i:nth-child(3) {
+  width: 56%;
+}
+
+.intro__cta {
+  margin-top: 0.25rem;
+  width: 100%;
+}
+
+@keyframes petal-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(22deg);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes envelope-settle {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.94) rotate(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes flap-breathe {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.97);
+  }
+}
+
+@media (max-width: 360px) {
+  .intro {
+    gap: 0.95rem;
+  }
+
+  .intro__envelope {
+    width: min(100%, 240px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro,
+  .petal,
+  .intro__envelope,
+  .intro__envelope-flap {
+    animation: none !important;
+  }
+}

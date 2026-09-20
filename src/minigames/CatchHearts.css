@@ -1,0 +1,151 @@
+.catch-hearts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.catch-hearts__hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
+  border-radius: 14px;
+  background: #fff8f5;
+  border: 1px solid #e8bcc5;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #321d25;
+}
+
+.catch-hearts__hud strong {
+  color: #781f35;
+  font-variant-numeric: tabular-nums;
+}
+
+.catch-hearts__arena {
+  position: relative;
+  min-height: 260px;
+  height: min(52vh, 340px);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(245, 221, 226, 0.9), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(232, 188, 197, 0.55), transparent 50%),
+    #fff8f5;
+  border: 1.5px dashed #e8bcc5;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+.catch-hearts__heart {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 248, 245, 0.55);
+  color: #781f35;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 16px rgba(120, 31, 53, 0.18);
+  animation: heart-appear 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.catch-hearts__heart svg {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 2px 2px rgba(50, 29, 37, 0.15));
+  animation: heart-float 2.8s ease-in-out infinite;
+}
+
+.catch-hearts__heart:hover {
+  background: #f5dde2;
+}
+
+.catch-hearts__heart:focus-visible {
+  box-shadow: 0 0 0 3px #fff8f5, 0 0 0 6px #781f35;
+}
+
+.catch-hearts__heart.is-pop {
+  pointer-events: none;
+  animation: heart-pop 0.22s ease forwards;
+}
+
+.catch-hearts__done {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 1rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #781f35;
+  text-align: center;
+  animation: bubble-in 0.4s ease both;
+}
+
+@keyframes heart-appear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes heart-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes heart-pop {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.35);
+  }
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 360px) {
+  .catch-hearts__arena {
+    min-height: 220px;
+    height: min(48vh, 280px);
+  }
+
+  .catch-hearts__heart {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catch-hearts__heart,
+  .catch-hearts__heart svg,
+  .catch-hearts__done {
+    animation: none !important;
+  }
+}
