@@ -12,14 +12,14 @@ function Petals({ active }) {
   if (!active) return null
   return (
     <div className="final-petals" aria-hidden="true">
-      {Array.from({ length: 12 }, (_, index) => (
+      {Array.from({ length: 10 }, (_, index) => (
         <span
           key={index}
           className="final-petals__item"
           style={{
-            left: `${6 + ((index * 7) % 88)}%`,
-            animationDelay: `${(index % 6) * 0.35}s`,
-            animationDuration: `${5 + (index % 4) * 0.6}s`,
+            left: `${8 + ((index * 8) % 84)}%`,
+            animationDelay: `${(index % 5) * 0.4}s`,
+            animationDuration: `${5.5 + (index % 3) * 0.7}s`,
           }}
         />
       ))}
@@ -29,6 +29,7 @@ function Petals({ active }) {
 
 /**
  * Финальная сцена: конверт → букет → письмо.
+ * Текст письма берётся только из gameData.finalLetter без изменений.
  */
 export default function FinalLetter({
   bouquet,
@@ -72,7 +73,15 @@ export default function FinalLetter({
     <section className="final-letter" ref={letterRef} aria-labelledby={titleId}>
       <Petals active={phase === 'revealed'} />
 
-      <Filia state="letter" line={DELIVERY_LINE} />
+      <Filia
+        state={phase === 'revealed' ? 'happy' : 'letter'}
+        line={
+          phase === 'revealed'
+            ? gameData.filiaLines.afterOpen ||
+              'Вот. Читай спокойно. Я рядом и делаю вид, что не подглядываю.'
+            : DELIVERY_LINE
+        }
+      />
 
       {phase !== 'revealed' && (
         <button
@@ -93,16 +102,21 @@ export default function FinalLetter({
         <div className="final-letter__reveal">
           <BouquetVisual
             className="final-letter__bouquet"
+            compact
             main={resolvedBouquet.main}
             extras={resolvedBouquet.extras || []}
             ribbon={resolvedBouquet.ribbon}
           />
 
-          <article className="final-letter__paper card" aria-live="polite">
-            <h2 id={titleId} className="final-letter__heading">
-              {gameData.letterTitle}
-            </h2>
-            <pre className="final-letter__text">{gameData.finalLetter}</pre>
+          <article className="final-letter__card" aria-live="polite">
+            <div className="final-letter__card-inner">
+              <p className="final-letter__eyebrow">Письмо для Бусинки</p>
+              <h2 id={titleId} className="final-letter__heading">
+                {gameData.letterTitle}
+              </h2>
+              <div className="final-letter__rule" aria-hidden="true" />
+              <div className="final-letter__text">{gameData.finalLetter}</div>
+            </div>
           </article>
 
           <button type="button" className="final-letter__reread" onClick={reread}>
